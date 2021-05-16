@@ -47,6 +47,9 @@
   .advantages__item-inner {
     width: 260px;
   }
+  .consultations__title {
+    font-size: fz(xl);
+  }
 }
 
 // до 576px
@@ -142,5 +145,8 @@
   }
   .hero__list-item:not(:last-child) {
     margin-right: 10px;
+  }
+  .consultations__form {
+    width: 290px;
   }
 }

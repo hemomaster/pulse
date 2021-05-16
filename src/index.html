@@ -171,6 +171,36 @@
               Просто заполните форму заявки и мы перезвоним вам в течении 10
               минут
             </p>
+            <form
+              class="consultations__form feed-form"
+              action="server.php"
+              method="post"
+            >
+              <input
+                type="text"
+                class="feed-form__field"
+                placeholder="Ваше имя"
+                name="user_name"
+              />
+              <input
+                type="text"
+                class="feed-form__field"
+                placeholder="Ваш телефон"
+                name="user_phone"
+              />
+              <input
+                type="text"
+                class="feed-form__field"
+                placeholder="Ваш E-mail"
+                name="user_email"
+              />
+              <button
+                class="btn-reset btn btn--submit feed-form__submit"
+                type="submit"
+              >
+                заказать консультацию
+              </button>
+            </form>
           </div>
         </section>
       </main>

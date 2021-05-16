@@ -110,21 +110,6 @@ body {
   fill: currentColor;
 }
 
-.btn {
-  @extend %museo-medium-font;
-  text-transform: uppercase;
-  color: clr(white-color);
-  background-color: clr(accent-color);
-  padding: 9px 19px;
-  border-radius: 5px;
-  white-space: nowrap;
-
-  &--long {
-    width: 300px;
-    height: 50px;
-  }
-}
-
 .title {
   @extend %museo-bold-font;
   font-size: fz(xl);

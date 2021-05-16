@@ -1,0 +1,30 @@
+.feed-form {
+  @extend %f-center;
+  flex-direction: column;
+  align-items: stretch;
+
+  &__field {
+    height: 54px;
+    @extend %museo-medium-font;
+    font-size: fz(xs);
+    border: none;
+    border-radius: 5px;
+    padding: 0 20px;
+
+    &::placeholder {
+      color: clr(tundora-color);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__submit {
+    font-size: fz(sm);
+  }
+}
