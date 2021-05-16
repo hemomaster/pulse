@@ -1,0 +1,179 @@
+/* *******************************
+FUNCTION AND MIXIN
+******************************* */
+// fixed fancybox error
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers});
+}
+
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}
+
+// возвращает значение цвета по ключу $key
+// $colors - ассоциативный список пар $key:цвет,
+// $colors - задан в _variables.scss
+@function clr($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+// Возвращает значение font-size по ключу
+// из ассоциативного массива $fontsize
+@function fz($key) {
+  @if map-has-key($fontsize, $key) {
+    @return map-get($fontsize, $key);
+  }
+  @warn "<<< Unknown `#{$key}` in $fontsize.";
+  @return null;
+}
+
+// Возвращает значение font-weidth по ключу
+// из ассоциативного массива $fontweidth
+@function fw($key) {
+  @if map-has-key($fontweidth, $key) {
+    @return map-get($fontweidth, $key);
+  }
+  @warn "<<< Unknown `#{$key}` in $fontweidth.";
+  @return null;
+}
+
+// Возвращает значение без единиц измерения
+// $number - Number to remove unit from
+// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+// Конвертирует полученное значение px, em, vw, vh => rem
+// где 1rem = 16px
+@function rem($number) {
+  @return (strip-unit($number) / 16) * 1rem;
+}
+
+/* 
+Пример
+https://youtu.be/T_zHRPpc1-w?t=3304
+
+все font-size оборачивеам в rem $fz-l: rem(16px)
+
+и в селекторе тега html по медиазапросам уменьшаем font-size
+html {
+  font-size: 11px;
+
+  @media(min-widht: 1200px{
+    font-size: 16px;
+  }
+  @media(min-widht: 992px{
+    font-size: 15px;
+  }
+  @media(min-widht: 768px{
+    font-size: 14px;
+  }
+  @media(min-widht: 576px{
+    font-size: 13px;
+  }
+  @media(min-widht: 375px{
+    font-size: 12px;
+  }
+}
+ */
+
+@mixin opensans($fz: fz(sm), $lh: 1.69) {
+  font-family: "Open Sans", sans-serif;
+  font-size: $fz;
+  line-height: $lh;
+  font-weight: fw(regular);
+}
+
+@mixin montserrat($fz: fz(xl), $lh: 1.42) {
+  font-family: "Montserrat", sans-serif;
+  font-size: $fz;
+  line-height: $lh;
+  font-weight: fw(bold);
+}
+
+// ДО указанного значения
+@mixin respond-to($point) {
+  @if map-has-key($breakpoints-to, $point) {
+    @media (max-width: #{map-get($breakpoints-to, $point)}) {
+      @content;
+    }
+  } @else {
+    @warn "<<< Unfortunately, no value could be retrieved from `#{$point}`. "
+        + "Please make sure it is defined in `$breakpoint-to` map.";
+  }
+}
+
+// ОТ указанного значения и выше
+@mixin respond-from($point) {
+  @if map-has-key($breakpoints, $point) {
+    @media (min-width: #{map-get($breakpoints, $point)}) {
+      @content;
+    }
+  } @else {
+    @warn "<<< Unfortunately, no value could be retrieved from `#{$point}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+// ограничить многострочный текст
+@mixin limitstr($str: 2) {
+  -webkit-line-clamp: $str; /* Число отображаемых строк */
+  display: -webkit-box; /* Включаем флексбоксы */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  overflow: hidden;
+}
+
+@mixin f-center($jc: space-between) {
+  display: flex;
+  align-items: center;
+  justify-content: $jc;
+}
+
+@mixin transit($prop: all) {
+  transition: $prop 0.3s ease-in-out;
+}
+
+%block {
+  display: block;
+}
+
+%x-center {
+  margin: 0 auto;
+}
+
+%f-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%cover-location {
+  background-color: clr(cover-color);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+%museo-bold-font {
+  font-family: $museo-font;
+  font-weight: fw(bold);
+}
+
+%museo-medium-font {
+  font-family: $museo-font;
+  font-weight: fw(medium);
+}
+
+%museo-light-font {
+  font-family: $museo-font;
+  font-weight: fw(light);
+}

@@ -1,0 +1,23 @@
+.consultations {
+  @extend %cover-location;
+  min-height: 680px;
+  height: 1px;
+  line-height: 1.5;
+  &__container {
+    @extend %f-center;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+  }
+  &__title {
+    max-width: 800px;
+    margin-bottom: 10px;
+  }
+  &__descr {
+    max-width: 425px;
+    @extend %museo-medium-font;
+    font-size: fz(lg);
+    color: clr(white-color);
+    margin-bottom: 35px;
+  }
+}

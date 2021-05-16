@@ -1,0 +1,13 @@
+@import "./vars";
+@import "./mixin";
+@import "./vendor";
+@import "./fonts";
+@import "./global";
+
+@import "./components/header";
+@import "./components/hero";
+@import "./components/advantages";
+@import "./components/consultations";
+@import "./components/footer";
+
+@import "./media";

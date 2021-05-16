@@ -1,0 +1,32 @@
+{
+  "name": "uber",
+  "version": "1.0.0",
+  "description": "training project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kholodov vadym",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-svg-sprite": "^1.5.0"
+  },
+  "dependencies": {
+    "inputmask": "^5.0.5",
+    "just-validate": "^1.5.0",
+    "normalize.css": "^8.0.1",
+    "swiper": "^6.5.9"
+  },
+  "browserslist": [
+    "last 5 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ]
+}

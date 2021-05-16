@@ -1,0 +1,59 @@
+.advantages {
+  @extend %museo-bold-font;
+  color: clr(dark-color);
+  background-color: clr(wild-sand-color);
+
+  &__container {
+    padding-top: 70px;
+    padding-bottom: 65px;
+  }
+  &__title {
+    margin-bottom: 60px;
+  }
+  &__list {
+    @extend %f-center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  &__item {
+    flex: 0 1 33.33%;
+
+    &:first-child .advantages__item-inner {
+      margin-left: 0;
+      margin-right: auto;
+    }
+    &:last-child .advantages__item-inner {
+      margin-right: 0;
+      margin-left: auto;
+    }
+  }
+  &__item-inner {
+    width: 270px;
+    @extend %x-center;
+  }
+  &__item-media {
+    width: 70px;
+    height: 70px;
+    @extend %x-center;
+    margin-bottom: 30px;
+  }
+  &__item-img {
+    object-fit: cover;
+  }
+  &__item-body {
+    text-align: center;
+  }
+  &__item-title {
+    font-size: fz(md);
+    margin-bottom: 20px;
+  }
+  &__item-descr {
+    @extend %museo-light-font;
+    font-size: fz(xs);
+    line-height: 128%;
+
+    span {
+      color: clr(accent-color);
+    }
+  }
+}

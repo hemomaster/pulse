@@ -1,0 +1,50 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 21px 0;
+
+  &__container {
+    @extend %f-center;
+    color: clr(white-color);
+  }
+
+  &__logo {
+    width: 250px;
+    margin-right: 10px;
+  }
+
+  &__logo-img {
+    @extend %block;
+    object-fit: cover;
+  }
+
+  &__official {
+    @extend %x-center;
+    @extend %museo-medium-font;
+    font-size: fz(xs)-2;
+    text-align: center;
+  }
+
+  &__official-strong {
+    @extend %block;
+    font-size: fz(md);
+  }
+
+  &__contact {
+    text-align: right;
+    margin-left: 10px;
+  }
+
+  &__contact-tel {
+    @extend %block;
+    @extend %museo-bold-font;
+    font-size: fz(md);
+  }
+
+  &__btn {
+    @extend %museo-medium-font;
+    font-size: fz(xs)-2;
+  }
+}

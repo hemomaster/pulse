@@ -1,0 +1,146 @@
+// до 1440px
+@include respond-to(xxxxl) {
+}
+
+// до 1200px
+@include respond-to(xxxl) {
+}
+
+// до 1024px
+@include respond-to(xxl) {
+}
+
+// до 992px
+@include respond-to(xl) {
+  .advantages__list {
+    justify-content: flex-start;
+    row-gap: 20px;
+  }
+  .advantages__item {
+    flex-basis: 50%;
+  }
+  .advantages__item-inner {
+    width: 300px;
+    margin-left: 0;
+  }
+  .advantages__item:last-child .advantages__item-inner {
+    margin-right: auto;
+    margin-left: 0;
+  }
+}
+
+// до 800px
+@include respond-to(lg) {
+}
+
+// до 768px
+@include respond-to(md) {
+  .header__container {
+    justify-content: space-between;
+  }
+  .header__official {
+    display: none;
+  }
+  .hero {
+    background-position-x: left;
+  }
+  .advantages__item-inner {
+    width: 260px;
+  }
+}
+
+// до 576px
+@include respond-to(sm) {
+  .header {
+    padding: 10px 0;
+  }
+  .header__container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .header__logo {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .header__contact {
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+  .hero {
+    background-position-x: -210px;
+    padding-top: 116px;
+  }
+  .hero__container {
+    justify-content: center;
+  }
+  .hero__content {
+    align-items: center;
+    text-align: center;
+  }
+  .hero__title {
+    font-size: fz(xxl);
+  }
+  .hero__descr {
+    font-size: fz(lg);
+  }
+  .hero__list-item {
+    width: 100px;
+  }
+  .hero__list-item:not(:last-child) {
+    margin-right: 15px;
+  }
+  .hero__list-descr {
+    font-size: fz(xs)-2px;
+  }
+  .advantages__title {
+    margin-bottom: 40px;
+  }
+  .advantages__item {
+    flex-basis: 100%;
+  }
+  .advantages__item:first-child .advantages__item-inner {
+    margin-left: auto;
+  }
+  .advantages__item:last-child .advantages__item-inner {
+    margin-left: auto;
+  }
+  .advantages__item-inner {
+    width: 290px;
+    margin: 0 auto;
+  }
+  .advantages__item-media {
+    margin-bottom: 20px;
+  }
+  .advantages__item-title {
+    margin-bottom: 15px;
+  }
+}
+
+// до 414px
+@include respond-to(xs) {
+  .hero__descr {
+    margin-bottom: 30px;
+  }
+}
+
+// до 375px
+@include respond-to(xxs) {
+  .btn--long {
+    width: 290px;
+  }
+  .header__contact-tel {
+    font-size: fz(xs);
+  }
+  .hero__list {
+    margin-bottom: 30px;
+  }
+  .hero__list-item {
+    width: 90px;
+  }
+  .hero__list-item:not(:last-child) {
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,76 @@
+/* *******************************
+main
+******************************* */
+$base: 4px;
+
+$max-width-container: 970px;
+$padding-container: 0 15px;
+
+/* *******************************
+COLORS
+******************************* */
+$colors: (
+  black-color: #000,
+  white-color: #fff,
+  cover-color: #d3d3d3,
+  dark-color: #111111,
+  accent-color: #c70101,
+  emperor-color: #555555,
+  dove-gray-color: #646464,
+  wild-sand-color: #f6f6f6,
+);
+/* *******************************
+FONTS
+******************************* */
+$museo-font: "Museo Moderno", sans-serif;
+
+$fontsize: (
+  xs: 14px,
+  sm: 16px,
+  md: 18px,
+  lg: 20px,
+  xl: 30px,
+  xxl: 36px,
+  xxxl: 42px,
+);
+
+$fontweidth: (
+  // thin: 100,
+  // extra-light: 200,
+  light: 300,
+  // regular: 400,
+  medium: 500,
+  // semi-bold: 600,
+  bold: 700,
+  // extra-bold: 800,
+  // black: 900,
+);
+/* *******************************
+BREAKPOINTS
+******************************* */
+// ОТ и выше
+$breakpoints: (
+  xxxs: 0,
+  xxs: 375px,
+  xs: 414px,
+  sm: 576px,
+  md: 768px,
+  lg: 800px,
+  xl: 992px,
+  xxl: 1024px,
+  xxxl: 1200px,
+  xxxxl: 1440px,
+);
+
+// ДО
+$breakpoints-to: (
+  xxs: map-get($breakpoints, xxs) - 0.02,
+  xs: map-get($breakpoints, xs) - 0.02,
+  sm: map-get($breakpoints, sm) - 0.02,
+  md: map-get($breakpoints, md) - 0.02,
+  lg: map-get($breakpoints, lg) - 0.02,
+  xl: map-get($breakpoints, xl) - 0.02,
+  xxl: map-get($breakpoints, xxl) - 0.02,
+  xxxl: map-get($breakpoints, xxxl) - 0.02,
+  xxxxl: map-get($breakpoints, xxxxl) - 0.02,
+);
