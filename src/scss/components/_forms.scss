@@ -10,6 +10,7 @@
     border: none;
     border-radius: 5px;
     padding: 0 20px;
+    border: 2px solid transparent;
 
     &::placeholder {
       color: clr(tundora-color);
@@ -22,9 +23,19 @@
     &:last-of-type {
       margin-bottom: 15px;
     }
+
+    &.js-validate-error-field {
+      border-width: 2px !important;
+      border-color: clr(accent-color) !important;
+      box-shadow: 0 0 8px 2px rgba(clr(accent-color), 0.8);
+    }
   }
 
   &__submit {
     font-size: fz(sm);
+  }
+
+  .js-validate-error-label {
+    display: none !important;
   }
 }

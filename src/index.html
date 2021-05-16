@@ -24,6 +24,7 @@
     <!-- <link rel="manifest" href="./images/favicon/site.webmanifest" /> -->
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.min.css" />
+    <script src="./js/main.min.js" defer></script>
   </head>
   <body>
     <div class="wrapper">
@@ -176,21 +177,30 @@
               action="server.php"
               method="post"
             >
+              <input type="hidden" name="admin_email" value="test@host.com" />
               <input
-                type="text"
-                class="feed-form__field"
-                placeholder="Ваше имя"
-                name="user_name"
+                type="hidden"
+                name="form_subject"
+                value="Заявка с сайта Pulse.com"
               />
               <input
                 type="text"
                 class="feed-form__field"
+                data-validate-field="fio"
+                placeholder="Ваше имя"
+                name="user_name"
+              />
+              <input
+                type="tel"
+                class="feed-form__field"
+                data-validate-field="tel"
                 placeholder="Ваш телефон"
                 name="user_phone"
               />
               <input
                 type="text"
                 class="feed-form__field"
+                data-validate-field="email"
                 placeholder="Ваш E-mail"
                 name="user_email"
               />
