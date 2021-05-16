@@ -1,0 +1,57 @@
+.carousel {
+  .container {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  &__container,
+  &__slide {
+    height: 580px;
+  }
+
+  &__slide {
+    @extend %f-center;
+    width: 750px;
+    @extend %x-center;
+  }
+
+  &__slide-img {
+    @extend %block;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__btn-prev,
+  &__btn-next {
+    width: 30px;
+    height: 50px;
+
+    &::after {
+      width: 100%;
+      height: 100%;
+      @extend %cover-location;
+      background-color: transparent;
+      font-size: 0;
+    }
+  }
+
+  &__btn-prev::after {
+    background-image: url("../../images/shevron-prev.png");
+  }
+
+  &__btn-next::after {
+    background-image: url("../../images/shevron-next.png");
+  }
+
+  &__btn-prev {
+    left: 15px;
+  }
+
+  &__btn-next {
+    right: 15px;
+  }
+
+  .swiper-slide {
+  }
+}

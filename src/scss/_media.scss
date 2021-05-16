@@ -27,6 +27,13 @@
     margin-right: auto;
     margin-left: 0;
   }
+  .carousel__container,
+  .carousel__slide {
+    height: 500px;
+  }
+  .carousel__slide {
+    width: 648px;
+  }
 }
 
 // до 800px
@@ -49,6 +56,13 @@
   }
   .consultations__title {
     font-size: fz(xl);
+  }
+  .carousel__container,
+  .carousel__slide {
+    height: 352px;
+  }
+  .carousel__slide {
+    width: 456px;
   }
 }
 
@@ -120,6 +134,30 @@
   .advantages__item-title {
     margin-bottom: 15px;
   }
+  .carousel .container {
+    padding-top: 90px;
+    padding-bottom: 30px;
+  }
+  .carousel__container,
+  .carousel__slide {
+    height: 266px;
+  }
+  .carousel__slide {
+    width: 345px;
+  }
+  .carousel__btn-prev,
+  .carousel__btn-next {
+    top: 50px;
+    width: 20px;
+    height: 35px;
+  }
+  .carousel__btn-prev {
+    left: auto;
+    right: 120px;
+  }
+  .carousel__btn-next {
+    right: 40px;
+  }
 }
 
 // до 414px
@@ -147,6 +185,13 @@
     margin-right: 10px;
   }
   .consultations__form {
+    width: 290px;
+  }
+  .carousel__container,
+  .carousel__slide {
+    height: 225px;
+  }
+  .carousel__slide {
     width: 290px;
   }
 }
