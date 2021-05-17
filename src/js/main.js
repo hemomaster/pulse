@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //SHOWING THE FRONT OR BACK OF THE CARD
-  const toggleShowSidesCard = (el) => {
+  const howingFrontOrBack = (el) => {
     const parent = el.closest(".card__wrapper");
 
     if (!parent) return;
@@ -95,8 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const content = parent.querySelector(".card__content");
     const descr = parent.querySelector(".card__descr");
 
-    content.classList.toggle("card__content--active");
-    descr.classList.toggle("card__descr--active");
+    if (content && descr) {
+      content.classList.toggle("card__content--active");
+      descr.classList.toggle("card__descr--active");
+    }
   };
 
   catalogContentAll.forEach((cat) =>
@@ -108,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         target.classList.contains("card__descr-link")
       ) {
         e.preventDefault();
-        toggleShowSidesCard(target);
+        howingFrontOrBack(target);
       }
     })
   );
