@@ -7,6 +7,7 @@
 
   &__tabs {
     @extend %f-center;
+    flex-wrap: wrap;
     margin-bottom: 60px;
   }
 
@@ -22,21 +23,22 @@
     color: clr(dove-gray-color);
     background-color: clr(white-color);
     transform: skewX(-26deg);
-    transition: box-shadow 0.3s ease-in-out, color 0.3s ease-in-out,
-      background-color 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     margin: 0 5px;
+    white-space: nowrap;
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0 0 3px 2px rgba(clr(accent-color), 0.8),
-        0 0 12px 2px rgba(clr(accent-color), 0.7);
-      border: none;
+      box-shadow: 0 0 12px 2px rgba(clr(accent-color), 0.7);
+      border-color: clr(accent-color);
+      transition: all 0.3s ease-in-out;
     }
 
     &--active {
       color: clr(white-color);
       background-color: clr(accent-color);
       border-color: clr(accent-color);
+      transition: all 0.3s ease-in-out;
     }
 
     span {

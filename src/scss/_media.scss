@@ -34,6 +34,10 @@
   .carousel__slide {
     width: 648px;
   }
+  .catalog__content {
+    max-width: 620px;
+    margin: 0 auto;
+  }
 }
 
 // до 800px
@@ -63,6 +67,18 @@
   }
   .carousel__slide {
     width: 456px;
+  }
+  .catalog__tabs {
+    gap: 20px;
+  }
+  .catalog__tab {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .catalog__content {
+    max-width: 300px;
   }
 }
 
@@ -158,6 +174,12 @@
   .carousel__btn-next {
     right: 40px;
   }
+  .catalog__title {
+    margin-bottom: 20px;
+  }
+  .catalog__tabs {
+    margin-bottom: 30px;
+  }
 }
 
 // до 414px
@@ -192,6 +214,12 @@
     height: 225px;
   }
   .carousel__slide {
+    width: 290px;
+  }
+  .catalog__content {
+    max-width: 290px;
+  }
+  .card {
     width: 290px;
   }
 }
