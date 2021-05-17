@@ -18,6 +18,10 @@
     color: clr(white-color);
     text-align: right;
   }
+  &__title,
+  &__descr {
+    text-transform: uppercase;
+  }
   &__title {
     @extend %museo-bold-font;
     font-size: fz(xxxl);

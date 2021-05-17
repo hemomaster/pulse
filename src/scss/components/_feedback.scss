@@ -1,0 +1,56 @@
+.feedback {
+  padding-bottom: 50px;
+  &__container {
+  }
+  &__title {
+    margin-bottom: 60px;
+  }
+  &__list {
+  }
+  &__item {
+    @extend %f-center;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+
+    &-media {
+      flex: 0 0 170px;
+      height: 170px;
+      border-radius: 100%;
+      overflow: hidden;
+
+      &-img {
+        @extend %block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-body {
+      flex-basis: 72.35%;
+      padding-left: 10px;
+    }
+
+    &-name {
+      @extend %museo-bold-font;
+      font-size: fz(md);
+      line-height: 1;
+    }
+
+    &-descr {
+      @extend %block;
+      @extend %museo-medium-font;
+      font-size: fz(xs);
+      color: clr(dove-gray-color);
+      margin-bottom: 10px;
+    }
+
+    &-text p:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+}
