@@ -1,0 +1,63 @@
+.catalog {
+  padding-bottom: 80px;
+
+  &__title {
+    margin-bottom: 45px;
+  }
+
+  &__tabs {
+    @extend %f-center;
+    margin-bottom: 60px;
+  }
+
+  &__tab {
+    width: 220px;
+    height: 52px;
+    border: 2px solid clr(cover-color);
+    @extend %museo-medium-font;
+    font-size: fz(md);
+    line-height: 50px;
+    text-transform: uppercase;
+    text-align: center;
+    color: clr(dove-gray-color);
+    background-color: clr(white-color);
+    transform: skewX(-26deg);
+    transition: box-shadow 0.3s ease-in-out, color 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
+    margin: 0 5px;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 3px 2px rgba(clr(accent-color), 0.8),
+        0 0 12px 2px rgba(clr(accent-color), 0.7);
+      border: none;
+    }
+
+    &--active {
+      color: clr(white-color);
+      background-color: clr(accent-color);
+      border-color: clr(accent-color);
+    }
+
+    span {
+      @extend %block;
+      transform: skewX(26deg);
+    }
+  }
+
+  &__content {
+    display: none;
+    @extend %f-center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+
+    &--active {
+      display: flex;
+    }
+  }
+
+  &__content-article {
+    flex-shrink: 0;
+  }
+}

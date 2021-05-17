@@ -1,0 +1,146 @@
+.card {
+  width: 300px;
+  min-height: 440px;
+  background-color: clr(white-color);
+  border: 2px solid clr(mercury-color);
+  padding: 20px;
+  overflow: hidden;
+
+  &__wrapper {
+    @extend %f-center;
+    align-items: flex-start;
+    width: calc(200% + 40px);
+    height: 325px;
+    overflow: hidden;
+  }
+
+  &__content {
+    flex: 0 0 50%;
+    height: 100%;
+    text-align: center;
+    padding-left: 20px;
+    margin-right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+
+    &--active {
+      margin-right: 20px;
+      transform: translateX(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &-img {
+      @extend %block;
+      height: 200px;
+      object-fit: cover;
+      @extend %x-center;
+      margin-bottom: 15px;
+    }
+
+    &-title {
+      font-size: fz(sm);
+      margin-bottom: 15px;
+    }
+
+    &-descr {
+      @include limitstr(2);
+      height: 42px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__descr {
+    flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+    padding-right: 20px;
+    margin-left: 20px;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+
+    &--active {
+      margin-left: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &-list {
+      color: clr(emperor-color);
+      text-align: left;
+      padding-right: 20px;
+    }
+    &-item {
+      @extend %museo-light-font;
+      font-size: fz(xs);
+      position: relative;
+      padding-left: 16px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 0;
+        width: 7px;
+        height: 7px;
+        background-color: clr(accent-color);
+      }
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .card-link {
+    position: relative;
+    @extend %museo-medium-font;
+    color: clr(accent-color);
+    text-transform: uppercase;
+    padding-bottom: 1px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+    }
+  }
+
+  hr {
+    border: none;
+    color: clr(mercury-color);
+    background-color: clr(mercury-color);
+    height: 1px;
+    margin: 17px 0;
+  }
+
+  &__footer {
+    @extend %f-center;
+    justify-content: space-between;
+
+    &-tags {
+      margin-right: 5px;
+    }
+
+    &-tags-old {
+      @extend %block;
+      line-height: 1;
+      text-decoration-line: line-through;
+      color: clr(emperor-color);
+      margin-bottom: 4px;
+    }
+
+    &-tags-new {
+      @extend %block;
+      @extend %museo-bold-font;
+      font-size: fz(lg);
+      line-height: 1;
+    }
+  }
+}
