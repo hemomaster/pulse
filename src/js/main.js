@@ -58,17 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // CATALOG TABS
-  const showTabByIndex = (i) =>
+  const showBoxByIndex = (i) => {
     catalogTabAll[i].classList.add("catalog__tab--active");
-
-  const hiddenTabByIndex = (i) =>
-    catalogTabAll[i].classList.remove("catalog__tab--active");
-
-  const showContentByIndex = (i) =>
     catalogContentAll[i].classList.add("catalog__content--active");
+  };
 
-  const hiddenContentByIndex = (i) =>
+  const hiddenBoxByIndex = (i) => {
+    catalogTabAll[i].classList.remove("catalog__tab--active");
     catalogContentAll[i].classList.remove("catalog__content--active");
+  };
 
   parentTab.addEventListener("click", (e) => {
     const target = e.target.closest(".catalog__tab");
@@ -76,13 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!target) return;
 
     [...catalogTabAll].forEach((tab, i) => {
-      if (tab === target) {
-        showTabByIndex(i);
-        showContentByIndex(i);
-      } else {
-        hiddenTabByIndex(i);
-        hiddenContentByIndex(i);
-      }
+      if (tab === target) showBoxByIndex(i);
+      else hiddenBoxByIndex(i);
     });
   });
 
