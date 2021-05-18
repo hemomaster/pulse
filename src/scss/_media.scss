@@ -1,13 +1,27 @@
 // до 1440px
 @include respond-to(xxxxl) {
+  .footer__map {
+    padding-bottom: 41%;
+  }
 }
 
 // до 1200px
 @include respond-to(xxxl) {
+  .footer__contact {
+    width: 420px;
+    padding: 30px;
+  }
+  .footer__contact-addr,
+  .footer__contact-tel {
+    margin-bottom: 25px;
+  }
 }
 
 // до 1024px
 @include respond-to(xxl) {
+  .footer__map {
+    padding-bottom: 52%;
+  }
 }
 
 // до 992px
@@ -37,6 +51,17 @@
   .catalog__content {
     max-width: 620px;
     margin: 0 auto;
+  }
+  .footer__contact {
+    left: auto;
+  }
+  .footer__contact {
+    width: 380px;
+    padding: 10px 20px;
+  }
+  .footer__contact-addr,
+  .footer__contact-tel {
+    margin-bottom: 20px;
   }
 }
 
@@ -77,6 +102,15 @@
   .feedback__item-media {
     flex: 0 0 140px;
     height: 140px;
+  }
+  .footer__map {
+    padding-bottom: 70%;
+  }
+  .footer__contact {
+    width: 360px;
+    top: auto;
+    left: 0;
+    bottom: 0;
   }
 }
 
@@ -209,6 +243,18 @@
   }
   .feedback__item:not(:last-child) {
     margin-bottom: 30px;
+  }
+  .footer__contact {
+    position: static;
+    width: 100%;
+  }
+  .footer__contact-addr {
+    font-style: normal;
+    font-size: fz(sm);
+    margin-bottom: 15px;
+  }
+  .footer__contact-item:not(:last-child) {
+    margin-right: 20px;
   }
 }
 

@@ -1,2 +1,80 @@
 .footer {
+  position: relative;
+  text-align: center;
+
+  &__map {
+    position: relative;
+    min-height: 400px;
+    padding-bottom: 32.8%;
+    background-color: clr(cover-color);
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__contact {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 480px;
+    @extend %x-center;
+    padding: 50px;
+    color: clr(white-color);
+    background-color: clr(accent-color);
+
+    &-addr {
+      @extend %museo-medium-font;
+      font-style: normal;
+      font-size: fz(lg);
+      margin-bottom: 35px;
+    }
+
+    &-tel {
+      display: inline-block;
+      @extend %museo-bold-font;
+      font-size: fz(lg);
+      margin-bottom: 35px;
+    }
+
+    &-list {
+      @extend %f-center;
+    }
+
+    &-item {
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+
+    &-social {
+      @extend %f-center;
+      width: 53px;
+      height: 53px;
+      border: 2px solid clr(white-color);
+      border-radius: 100%;
+    }
+  }
+
+  .icon-facebook,
+  .icon-instagram,
+  .icon-pinterest {
+    fill: clr(white-color);
+  }
+
+  .icon-instagram,
+  .icon-pinterest {
+    width: 24px;
+    height: 24px;
+  }
+
+  .icon-facebook {
+    width: 22px;
+    height: 25px;
+  }
 }
