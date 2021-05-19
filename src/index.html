@@ -45,7 +45,12 @@
             <a href="tel:+74999228974" class="header__contact-tel"
               >+7 (499) 922-89-74</a
             >
-            <button class="btn-reset btn header__btn">заказать звонок</button>
+            <button
+              class="btn-reset btn header__btn"
+              data-modal-id="consultation"
+            >
+              заказать звонок
+            </button>
           </div>
         </div>
       </header>
@@ -87,7 +92,10 @@
                   >
                 </li>
               </ul>
-              <button class="btn-reset btn btn--long hero__btn">
+              <button
+                class="btn-reset btn btn--long hero__btn"
+                data-modal-id="consultation"
+              >
                 заказать консультацию
               </button>
               <div class="hero__link">
@@ -922,6 +930,97 @@
           </ul>
         </div>
       </footer>
+    </div>
+    <div class="modal-overlay">
+      <div class="modal" id="consultation">
+        <h2 class="title modal__title">Просто заполните форму заявки</h2>
+        <span class="title modal__subtitle"
+          >и мы перезвоним Вам в течении 10 минут</span
+        >
+        <form class="feed-form modal__form" action="server.php" method="post">
+          <input type="hidden" name="admin_email" value="test@host.com" />
+          <input
+            type="hidden"
+            name="form_subject"
+            value="Заявка с сайта Pulse.com"
+          />
+          <input
+            type="text"
+            class="feed-form__field"
+            data-validate-field="fio"
+            placeholder="Ваше имя"
+            name="user_name"
+          />
+          <input
+            type="tel"
+            class="feed-form__field"
+            data-validate-field="tel"
+            placeholder="Ваш телефон"
+            name="user_phone"
+          />
+          <input
+            type="text"
+            class="feed-form__field"
+            data-validate-field="email"
+            placeholder="Ваш E-mail"
+            name="user_email"
+          />
+          <button
+            class="btn-reset btn btn--submit feed-form__submit"
+            type="submit"
+          >
+            заказать консультацию
+          </button>
+        </form>
+        <button type="button" class="btn-reset modal__close">&times;</button>
+      </div>
+      <div class="modal" id="order">
+        <h2 class="title modal__title">Ваш заказ:</h2>
+        <span class="title modal__subtitle">Пульсометр Polar FT1</span>
+        <form class="feed-form modal__form" action="server.php" method="post">
+          <input type="hidden" name="admin_email" value="test@host.com" />
+          <input
+            type="hidden"
+            name="form_subject"
+            value="Заявка с сайта Pulse.com"
+          />
+          <input
+            type="text"
+            class="feed-form__field"
+            data-validate-field="fio"
+            placeholder="Ваше имя"
+            name="user_name"
+          />
+          <input
+            type="tel"
+            class="feed-form__field"
+            data-validate-field="tel"
+            placeholder="Ваш телефон"
+            name="user_phone"
+          />
+          <input
+            type="text"
+            class="feed-form__field"
+            data-validate-field="email"
+            placeholder="Ваш E-mail"
+            name="user_email"
+          />
+          <button
+            class="btn-reset btn btn--submit feed-form__submit"
+            type="submit"
+          >
+            купить
+          </button>
+        </form>
+        <button type="button" class="btn-reset modal__close">&times;</button>
+      </div>
+      <div class="modal modal--mini" id="success">
+        <h2 class="title modal__title">Спасибо за вашу заявку!</h2>
+        <span class="title modal__subtitle"
+          >Наш менеджер свяжется с Вами в ближайшее время!</span
+        >
+        <button type="button" class="btn-reset modal__close">&times;</button>
+      </div>
     </div>
   </body>
 </html>

@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const parentTab = document.querySelector(".catalog__tabs");
   const catalogTabAll = document.querySelectorAll(".catalog__tab");
   const catalogContentAll = document.querySelectorAll(".catalog__content");
+  const modalOverlay = document.querySelector(".modal-overlay");
+  const consultationBtnAll = document.querySelectorAll(
+    "button[data-modal-id=consultation]"
+  );
 
   const swiper = new Swiper(carousel, {
     slidesPerView: 1,
@@ -73,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!target) return;
 
-    [...catalogTabAll].forEach((tab, i) => {
+    catalogTabAll.forEach((tab, i) => {
       if (tab === target) showBoxByIndex(i);
       else hiddenBoxByIndex(i);
     });
@@ -107,6 +111,35 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   );
+
+  // ACTIVATE MODAL
+  const handlerModalOverlay = (par) =>
+    (modalOverlay.style.display = par ? "block" : "");
+
+  const deActivateModal = (...modal) => {
+    modal.forEach((el) => (document.getElementById(el).style.display = ""));
+    handlerModalOverlay(false);
+  };
+
+  // open modal
+  consultationBtnAll.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.modalId;
+
+      if (!id) return;
+
+      handlerModalOverlay(true);
+      document.getElementById(id).style.display = "block";
+    })
+  );
+
+  // close modal
+  modalOverlay.addEventListener("click", (e) => {
+    const target = e.target;
+
+    if (target.classList.contains("modal__close"))
+      deActivateModal("consultation", "order", "success");
+  });
 
   // end js
 });
