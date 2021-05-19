@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const dataForm = new FormData(form);
 
         fetch(form.action, {
-          method: "post",
+          method: "POST",
           body: dataForm,
         })
           .then((response) => {
