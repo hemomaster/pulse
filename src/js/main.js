@@ -6,12 +6,56 @@ document.addEventListener("DOMContentLoaded", () => {
   const parentTab = document.querySelector(".catalog__tabs");
   const catalogTabAll = document.querySelectorAll(".catalog__tab");
   const catalogContentAll = document.querySelectorAll(".catalog__content");
-  const modalOverlay = document.querySelector(".modal-overlay");
+  const modalOverlay = document.getElementById("overlay");
   const modalSubtitleOrder = document.querySelector("#order .modal__subtitle");
+  const scrollLinkUp = document.getElementById("scroll-up");
+  const scrollLinkAll = document.querySelectorAll(
+    "a[href^='#']:not(a[href='#'])"
+  );
   const consultationBtnAll = document.querySelectorAll(
     "button[data-modal-id=consultation]"
   );
 
+  // FADEOUT, FADEIN
+  const fadeOut = (selector, speed = 10) => {
+    let opacity = 1;
+    const el = document.querySelector(selector);
+
+    if (!el) return;
+
+    const timer = setInterval(function () {
+      if (opacity <= 0.1) {
+        clearInterval(timer);
+        el.style.display = "none";
+      }
+
+      el.style.opacity = opacity;
+
+      opacity -= opacity * 0.1;
+    }, speed);
+  };
+
+  const fadeIn = (selector, speed = 10) => {
+    var opacity = 0.01;
+    const el = document.querySelector(selector);
+
+    if (!el) return;
+
+    el.style.opacity = opacity;
+    el.style.display = "block";
+
+    var timer = setInterval(function () {
+      if (opacity >= 1) {
+        clearInterval(timer);
+      }
+
+      el.style.opacity = opacity;
+
+      opacity += opacity * 0.1;
+    }, speed);
+  };
+
+  // CAROUSEL
   const swiper = new Swiper(carousel, {
     slidesPerView: 1,
     // spaceBetween: 50,
@@ -129,9 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // ACTIVATE MODAL CONSULTATION
-  const handlerModalOverlay = (par) =>
-    (modalOverlay.style.display = par ? "block" : "");
-
   const activateModal = (id) => {
     const modal = document.getElementById(id);
     const fieldElems = modal.querySelectorAll("input[data-validate-field]");
@@ -142,12 +183,14 @@ document.addEventListener("DOMContentLoaded", () => {
       el.style.color = "";
     });
     // show
-    modal.style.display = "block";
+    disableScroll();
+    fadeIn("#" + id);
   };
 
   const deActivateModal = (...modal) => {
-    modal.forEach((el) => (document.getElementById(el).style.display = ""));
-    handlerModalOverlay(false);
+    modal.forEach((el) => fadeOut(el));
+    fadeOut("#overlay");
+    enableScroll();
   };
 
   // open modal
@@ -157,8 +200,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!id) return;
 
-      handlerModalOverlay(true);
-      activateModal(id);
+      const modal = document.getElementById(id);
+      const fieldElems = modal.querySelectorAll("input[data-validate-field]");
+      // deactivate error class validation
+      fieldElems.forEach((el) => {
+        el.classList.remove("js-validate-error-field");
+        el.style.border = "";
+        el.style.color = "";
+      });
+
+      disableScroll();
+      fadeIn("#overlay");
+      fadeIn("#" + id);
     })
   );
 
@@ -167,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = e.target;
 
     if (target.classList.contains("modal__close") || !target.closest(".modal"))
-      deActivateModal("consultation", "order", "success");
+      deActivateModal("#consultation", "#order", "#success");
   });
 
   // ACTIVATE MODAL ORDER
@@ -176,11 +229,50 @@ document.addEventListener("DOMContentLoaded", () => {
       const target = e.target;
       if (!target.classList.contains("card__footer-btn")) return;
 
-      handlerModalOverlay(true);
+      fadeIn("#overlay");
       modalSubtitleOrder.textContent = getParentCard(target).querySelector(
         ".card__content-title"
       ).textContent;
-      activateModal("order");
+      fadeIn("#order");
+    })
+  );
+
+  // SMOOTH SCROLL
+  let isDoneIn = false,
+    isDoneOut = false;
+
+  const handlerScrollUp = () => {
+    if (window.pageYOffset >= window.innerHeight * 2) {
+      if (!isDoneIn) {
+        isDoneIn = true;
+        isDoneOut = false;
+        fadeIn("#scroll-up");
+      }
+    } else {
+      if (!isDoneOut) {
+        isDoneOut = true;
+        isDoneIn = false;
+        fadeOut("#scroll-up");
+      }
+    }
+  };
+
+  window.addEventListener("scroll", handlerScrollUp);
+  handlerScrollUp();
+
+  scrollLinkAll.forEach((link) =>
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = e.target
+        .closest(".scroll-link")
+        .getAttribute("href")
+        .substring(1);
+
+      if (!id) return;
+
+      document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+      });
     })
   );
 

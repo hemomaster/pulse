@@ -24,6 +24,7 @@
     <!-- <link rel="manifest" href="./images/favicon/site.webmanifest" /> -->
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.min.css" />
+    <script src="./js/disableScroll.js" async></script>
     <script src="./js/main.min.js" defer></script>
   </head>
   <body>
@@ -57,6 +58,7 @@
       <main class="main">
         <section
           class="hero"
+          id="hero"
           style="background-image: url('./images/hero-bg.jpg')"
         >
           <div class="container hero__container">
@@ -931,7 +933,7 @@
         </div>
       </footer>
     </div>
-    <div class="modal-overlay">
+    <div class="modal-overlay" id="overlay">
       <div class="modal" id="consultation">
         <h2 class="title modal__title">Просто заполните форму заявки</h2>
         <span class="title modal__subtitle"
@@ -1022,5 +1024,9 @@
         <button type="button" class="btn-reset modal__close">&times;</button>
       </div>
     </div>
+    <a href="#hero" class="scroll-link scroll-up" id="scroll-up"
+      ><svg class="icon icon-chevron-circle-up">
+        <use xlink:href="./images/symbol-defs.svg#chevron-circle-up"></use></svg
+    ></a>
   </body>
 </html>
