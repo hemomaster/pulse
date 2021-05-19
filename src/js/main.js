@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const catalogTabAll = document.querySelectorAll(".catalog__tab");
   const catalogContentAll = document.querySelectorAll(".catalog__content");
   const modalOverlay = document.querySelector(".modal-overlay");
+  const modalSubtitleOrder = document.querySelector("#order .modal__subtitle");
   const consultationBtnAll = document.querySelectorAll(
     "button[data-modal-id=consultation]"
   );
@@ -55,7 +56,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  validateForm(".feed-form", {
+  validateForm(".consultations .feed-form", {
+    fio: { required: true },
+    email: { required: true, email: true },
+    tel: { required: true },
+  });
+
+  validateForm("#consultation .feed-form", {
+    fio: { required: true },
+    email: { required: true, email: true },
+    tel: { required: true },
+  });
+
+  validateForm("#order .feed-form", {
     fio: { required: true },
     email: { required: true, email: true },
     tel: { required: true },
@@ -84,8 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //SHOWING THE FRONT OR BACK OF THE CARD
+
+  const getParentCard = (el) => el.closest(".catalog__content-article.card");
+
   const howingFrontOrBack = (el) => {
-    const parent = el.closest(".card__wrapper");
+    const parent = getParentCard(el);
 
     if (!parent) return;
 
@@ -112,9 +128,22 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   );
 
-  // ACTIVATE MODAL
+  // ACTIVATE MODAL CONSULTATION
   const handlerModalOverlay = (par) =>
     (modalOverlay.style.display = par ? "block" : "");
+
+  const activateModal = (id) => {
+    const modal = document.getElementById(id);
+    const fieldElems = modal.querySelectorAll("input[data-validate-field]");
+    // deactivate error class validation
+    fieldElems.forEach((el) => {
+      el.classList.remove("js-validate-error-field");
+      el.style.border = "";
+      el.style.color = "";
+    });
+    // show
+    modal.style.display = "block";
+  };
 
   const deActivateModal = (...modal) => {
     modal.forEach((el) => (document.getElementById(el).style.display = ""));
@@ -129,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!id) return;
 
       handlerModalOverlay(true);
-      document.getElementById(id).style.display = "block";
+      activateModal(id);
     })
   );
 
@@ -137,9 +166,23 @@ document.addEventListener("DOMContentLoaded", () => {
   modalOverlay.addEventListener("click", (e) => {
     const target = e.target;
 
-    if (target.classList.contains("modal__close"))
+    if (target.classList.contains("modal__close") || !target.closest(".modal"))
       deActivateModal("consultation", "order", "success");
   });
+
+  // ACTIVATE MODAL ORDER
+  catalogContentAll.forEach((cat) =>
+    cat.addEventListener("click", (e) => {
+      const target = e.target;
+      if (!target.classList.contains("card__footer-btn")) return;
+
+      handlerModalOverlay(true);
+      modalSubtitleOrder.textContent = getParentCard(target).querySelector(
+        ".card__content-title"
+      ).textContent;
+      activateModal("order");
+    })
+  );
 
   // end js
 });

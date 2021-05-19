@@ -7,10 +7,10 @@
     height: 54px;
     @extend %museo-medium-font;
     font-size: fz(xs);
-    border: none;
     border-radius: 5px;
     padding: 0 20px;
-    border: 2px solid transparent;
+    border: 2px solid transparent !important;
+    color: clr(dark-color) !important;
 
     &::placeholder {
       color: clr(tundora-color);
