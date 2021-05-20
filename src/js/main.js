@@ -16,44 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "button[data-modal-id=consultation]"
   );
 
-  // FADEOUT, FADEIN
-  const fadeOut = (selector, speed = 10) => {
-    let opacity = 1;
-    const el = document.querySelector(selector);
-
-    if (!el) return;
-
-    const timer = setInterval(function () {
-      if (opacity <= 0.1) {
-        clearInterval(timer);
-        el.style.display = "none";
-      }
-
-      el.style.opacity = opacity;
-
-      opacity -= opacity * 0.1;
-    }, speed);
-  };
-
-  const fadeIn = (selector, speed = 10) => {
-    var opacity = 0.01;
-    const el = document.querySelector(selector);
-
-    if (!el) return;
-
-    el.style.opacity = opacity;
-    el.style.display = "block";
-
-    var timer = setInterval(function () {
-      if (opacity >= 1) {
-        clearInterval(timer);
-      }
-
-      el.style.opacity = opacity;
-
-      opacity += opacity * 0.1;
-    }, speed);
-  };
+  // WOW
+  new WOW().init();
 
   // CAROUSEL
   const swiper = new Swiper(carousel, {
@@ -183,24 +147,32 @@ document.addEventListener("DOMContentLoaded", () => {
       el.style.color = "";
     });
     // show
-    disableScroll();
+    // disableScroll();
     fadeIn("#" + id);
   };
 
   const deActivateModal = (...modal) => {
     modal.forEach((el) => fadeOut(el));
     fadeOut("#overlay");
-    enableScroll();
+    // enableScroll();
   };
+
+  function handlerModalHeigth(modal) {
+    // console.log("modal: ", modal);
+    return function () {
+      if (window.innerHeight < 410) modal.classList.add("modal--small-y");
+      else modal.classList.remove("modal--small-y");
+    };
+  }
 
   // open modal
   consultationBtnAll.forEach((btn) =>
     btn.addEventListener("click", () => {
       const id = btn.dataset.modalId;
-
-      if (!id) return;
-
       const modal = document.getElementById(id);
+
+      if (!id || !modal) return;
+
       const fieldElems = modal.querySelectorAll("input[data-validate-field]");
       // deactivate error class validation
       fieldElems.forEach((el) => {
@@ -209,7 +181,10 @@ document.addEventListener("DOMContentLoaded", () => {
         el.style.color = "";
       });
 
-      disableScroll();
+      window.addEventListener("resize", handlerModalHeigth(modal));
+      handlerModalHeigth(modal)();
+
+      // disableScroll();
       fadeIn("#overlay");
       fadeIn("#" + id);
     })

@@ -58,6 +58,19 @@
       line-height: 1.5;
     }
   }
+
+  &--small-y {
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: auto;
+    height: 100vh;
+    padding-top: 50px;
+
+    .modal__close {
+      top: 5px;
+      right: 25px;
+    }
+  }
 }
 
 #consultation,

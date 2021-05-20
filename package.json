@@ -21,10 +21,12 @@
     "gulp-uglify-es": "^2.0.0"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "inputmask": "^5.0.5",
     "just-validate": "^1.5.0",
     "normalize.css": "^8.0.1",
-    "swiper": "^6.5.9"
+    "swiper": "^6.5.9",
+    "wow.js": "^1.2.2"
   },
   "browserslist": [
     "last 5 version",

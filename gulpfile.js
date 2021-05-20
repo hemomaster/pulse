@@ -41,9 +41,10 @@ const styles = () => {
 // JAVASCRIPT
 const scripts = () => {
   return src([
-    "node_modules/just-validate/dist/js/just-validate.min.js",
-    "node_modules/inputmask/dist/inputmask.min.js",
-    "node_modules/swiper/swiper-bundle.min.js",
+    "node_modules/just-validate/dist/js/just-validate.js",
+    "node_modules/inputmask/dist/inputmask.js",
+    "node_modules/swiper/swiper-bundle.js",
+    "node_modules/wow.js/dist/wow.js",
     "src/js/main.js",
   ])
     .pipe(concat("main.min.js"))
