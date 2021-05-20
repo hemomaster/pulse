@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const catalogContentAll = document.querySelectorAll(".catalog__content");
   const modalOverlay = document.getElementById("overlay");
   const modalSubtitleOrder = document.querySelector("#order .modal__subtitle");
-  const scrollLinkUp = document.getElementById("scroll-up");
   const scrollLinkAll = document.querySelectorAll(
     "a[href^='#']:not(a[href='#'])"
   );
@@ -105,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //SHOWING THE FRONT OR BACK OF THE CARD
-
   const getParentCard = (el) => el.closest(".catalog__content-article.card");
 
   const howingFrontOrBack = (el) => {
